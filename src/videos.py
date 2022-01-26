@@ -10,19 +10,15 @@ import statistics
 from parsers import *
 from collections import Counter
 
-Videos = namedtuple('Videos','id,fecha_trending,titulo,canal,categoria,visitas,likes,dislikes')
+Videos = namedtuple('Videos','identidad,fecha,titulo,canal,categoria,visitas,likes,dislikes')
 
 def lee_trending_videos(fichero):
     with open(fichero,encoding='utf-8') as f:
         lector=csv.reader(f, delimiter=";")
         next(lector)
         res =[]
-        for id,fecha_trending,titulo,canal,categoria,visitas,likes,dislikes in lector:
-            fecha = datetime.strptime(fecha_trending, '%d/%m/%Y')
-            visitas=int(visitas)
-            likes=int(likes)
-            dislikes=int(dislikes)
-            tupla_videos = Videos(id,fecha,titulo,canal,categoria,visitas,likes,dislikes)
+        for identidad,fecha,titulo,canal,categoria,visitas,likes,dislikes in lector:
+            tupla_videos = Videos(identidad,parsea_fecha(fecha),titulo,canal,categoria,int(visitas),int(likes),int(dislikes))
             res.append(tupla_videos)
     return res
 
