@@ -31,9 +31,9 @@ def test_video_mayor_ratio_likes_dislikes(registros,categoria=None):
 
 def main():
     fichero = ('../data/MX_Youtube_2017_utf8.csv')
-    REGISTROS = test_lee_trending_videos(fichero)
+    REGISTROS = lee_trending_videos(fichero)
     test_lee_trending_videos(fichero)
-    test_media_visitas(REGISTROS,'16/1/2017')
+    test_media_visitas(REGISTROS,'11/1/2017')
     #test_video_mayor_ratio_likes_dislikes(REGISTROS,'Education')
 if __name__=="__main__":
     main()

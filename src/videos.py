@@ -25,10 +25,10 @@ def lee_trending_videos(fichero):
     
 def media_visitas(registros,fecha_dada):
     fecha_dada = datetime.strptime(fecha_dada, '%d/%m/%Y').date()
-    visitas = [r.visitas for r in registros if r.fecha_trending==fecha_dada]
+    visitas = [r.visitas for r in registros if r.fecha==fecha_dada]
     media = 0
-    if len(visitas)>0:
-        media = sum(visitas)/len(visitas)
+    if(len(visitas)>0):
+        media =sum(visitas)/len(visitas)
     return media
 
 def video_mayor_ratio_likes_dislikes(registros,categoria=None):
